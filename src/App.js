@@ -1,98 +1,94 @@
 import "./App.css";
 import { useState } from "react";
-import logo from './logo.png';
+import logo from "./images/logo.png";
 function App() {
   const [counter, setCounter] = useState(0);
   const [currentPrize, setCurrentPrize] = useState(0);
-  const [failed, setFailed] = useState(false);
-  const [time, setTime] = useState(30);
+  const [gameState, setGameState] = useState(false);
+  const [time, setTime] = useState(5);
+
   var database = [
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
     {
       question: "How is the front page of a website commonly referred to?",
       options: ["Pile page", "Abode page", "Pad Page", "Home page"],
-      answer: "d",
+      answer: "d"
     },
     {
-      question: "Which of yhe following is not a Higher order function?",
+      question: "What JavaScript engine is used in Chrome?",
+      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
+      answer: "c"
+    },
+    {
+      question: "Which of the following is not a Higher order function?",
       options: ["alert", "filter", "map", "reduce"],
-      answer: "a",
+      answer: "a"
     },
     {
       question:
         "The process in which a function is called above it's declaration is known as?",
       options: ["Preemption", "Hoisting", "Preference", "Scoping"],
-      answer: "b",
+      answer: "b"
     },
     {
       question:
         "alert('Hello world!');<br />In the code above, 'Hello world' is the",
       options: ["parameter", "argument", "placeholder", "input"],
-      answer: "b",
+      answer: "b"
     },
     {
       question: "Asynchronous JavaScript is also known as?",
       options: ["Blocking", "Non-blocking", "Serial", "Unordered"],
-      answer: "b",
+      answer: "b"
     },
     {
       question: "Promises are used to ?",
-      options: [
-        "Enhance polymorphism",
-        "Avoid callback hell",
-        "Serve Ice cream",
-        "Stop execution",
-      ],
-      answer: "b",
+      options: ["Enhance polymorphism", "Avoid callback hell", "Serve Ice cream", "Stop execution",],
+      answer: "b"
     },
     {
       question: "Which of the following doesn't work with promises?",
       options: ["then", "catch", "finally", "stop"],
-      answer: "d",
+      answer: "d"
+    },
+    {
+      question: "What type of component uses the \"this\" keyword?",
+      options: ["Functional", "Dumb", "Class", "Stateless"],
+      answer: "c"
+    },
+    {
+      question: "React is primarily made for?",
+      options: ["Making better UI", "Improving speed", "Asynchronous handling", "Smart typing"],
+      answer: "a"
+    },
+    {
+      question: "JavaScript is a ?",
+      options: ["Compiled language", "Interpreted language", "Strongly typed", "Non-programming language"],
+      answer: "b"
+    },
+    {
+      question: "What JavaScript engine is used in Mozilla?",
+      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
+      answer: "b"
     },
     {
       question: "What JavaScript engine is used in Chrome?",
       options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
+      answer: "c"
     },
     {
       question: "What JavaScript engine is used in Chrome?",
       options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
+      answer: "c"
     },
     {
       question: "What JavaScript engine is used in Chrome?",
       options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c",
-    },
+      answer: "c"
+    }
   ];
   var prizes = [
     100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000,
-    250000, 500000, 1000000,
+    250000, 500000, 1000000
   ];
 
   let tick = null;
@@ -114,105 +110,49 @@ function App() {
   function play_game() {
     let modal_bg = document.getElementById("modal_bg");
     modal_bg.style.display = "none";
-    // alert("op");
     // fadeOut(modal_bg, 0.07);
-    // setTimeout(display_question, 2000);
     start_timer(validate_answer);
-    // setTime(90);
-    // setTimeout(() => {setTime(20)}, 2000);
   }
-  // let counter = 0;
-  // let correct_answer = "";
-  // let current_prize = 0;
   function display_question() {
-    setCounter(counter + 1);
+    setCounter((counter) => counter + 1);
     setCurrentPrize(prizes[counter]);
-    // counter += 1;
-
-    // alert(currentPrize);
-    // let question = document.getElementById("question");
-    // let opt_a = document.getElementById("opt_a");
-    // let opt_b = document.getElementById("opt_b");
-    // let opt_c = document.getElementById("opt_c");
-    // let opt_d = document.getElementById("opt_d");
-
-    // question.innerHTML = database[counter].question;
-    // opt_a.innerHTML = "A. " + database[counter].options[0];
-    // opt_b.innerHTML = "B. " + database[counter].options[1];
-    // opt_c.innerHTML = "C. " + database[counter].options[2];
-    // opt_d.innerHTML = "D. " + database[counter].options[3];
-
-    // correct_answer = database[counter].answer;
-
-    // let time_box = document.getElementById("time_box");
-    // current_prize = prizes[counter];
-    // let selected_prize = document.getElementById("_" + current_prize);
-    // selected_prize.style.backgroundColor = "green";
-    // let prev_color = selected_prize.style.color;
-    // selected_prize.style.color = "black";
-    // selected_prize.style.fontWeight = "bolder";
-
-    // if(counter){
-    //     let prev_prize = prizes[counter-1];
-    //     document.getElementById("_" + prev_prize).style.backgroundColor = "";
-    //     document.getElementById("_" + prev_prize).style.color = prev_color;
-    //     document.getElementById("_" + prev_prize).style.fontWeight = "";
-    // }
   }
   function validate_answer(answer) {
-    // stop timer
-    stop_timer();
-    // start_timer(validate_answer);
 
     if (answer !== database[counter].answer) {
-      // disable buttons
-      // document.getElementById("opt_a").setAttribute("disabled", "true");
-      // document.getElementById("opt_a").style.cursor = "not-allowed";
-      // document.getElementById("opt_b").setAttribute("disabled", "true");
-      // document.getElementById("opt_b").style.cursor = "not-allowed";
-      // document.getElementById("opt_c").setAttribute("disabled", "true");
-      // document.getElementById("opt_c").style.cursor = "not-allowed";
-      // document.getElementById("opt_d").setAttribute("disabled", "true");
-      // document.getElementById("opt_d").style.cursor = "not-allowed";
+        clearInterval(tick);
 
-      alert("wrong answer");
-      setFailed(true);
-      setCurrentPrize(0);
-      // current_prize = 0;
-      // let correct_opt = document.getElementById("opt_" + database[counter].answer);
-      // correct_opt.style.backgroundColor = "green";
+        alert("wrong answer");
+        setGameState(true);
+        setCurrentPrize(0);
     } else {
-      // duration = 30;
-      if (counter === database.length - 1) {
-        // display congrats
-        alert("you've won!!");
-        setCounter(0);
-        // counter = 0;
-      } else {
-        // alert("right answer");
-        display_question();
-      }
+        if (counter === database.length - 1) {
+            clearInterval(tick);
+            // display congrats
+            alert("you've won!!");
+            setCounter(0);
+        } else {
+            setTime((time) => 30);
+            display_question();
+        }
     }
   }
-  function start_timer(callback) {
-    // let duration = given_duration;
-    tick = setInterval(() => {
-        // alert(duration);
-        // if (duration <= 10) {
-        //     time_box.style.fontWeight = "bolder";
+//   function getTime(){return time}
+    function start_timer(callback) {
+        tick = setInterval(() => {
+            setTime((time) => {
+            // console.log(time);
+                if(time === 0) {
+                    callback();
+                    return 0;
+                }
+                return (time -=  1);
+            });
+        }, 1000);
+    }
+    // setTimeout(() => {console.log(time)}, 3000)  
 
-        // if(time < 0)
-        //     callback()
-        // }
-        // time_box.innerHTML = duration >= 0 ? duration : 0;
-        // time_box.style.color = duration <= 10 ? "red" : "white";
-        // duration -= 1;
-        setTime(time - 1);
-        // timee -= 1;
-        // console.log(time);
-        // time = (time - 1);
-    }, 1000);
-  }
+
   function stop_timer() {
     clearInterval(tick);
   }
@@ -255,7 +195,7 @@ function App() {
           <div id="empty" className="halves"></div>
 
           <div id="logo_div" className="halves">
-            <img src="./images/logo.png" id="logo" alt="logo" />
+            <img src={logo} id="logo" alt="logo" />
             <p id="time_box" style={{ color: time <= 10 ? "red" : "white" }}>
               {time}
             </p>
@@ -318,14 +258,14 @@ function App() {
                 onClick={() => {
                   validate_answer("a");
                 }}
-                disabled={failed ? true : false}
+                disabled={gameState ? true : false}
                 style={{
-                  backgroundColor: failed
+                  backgroundColor: gameState
                     ? database[counter].answer === "a"
                       ? "green"
                       : ""
                     : "",
-                  cursor: failed ? "not-allowed" : "",
+                  cursor: gameState ? "not-allowed" : "",
                 }}
               >
                 {database[counter].options[0]}
@@ -336,14 +276,14 @@ function App() {
                 onClick={() => {
                   validate_answer("b");
                 }}
-                disabled={failed ? true : false}
+                disabled={gameState ? true : false}
                 style={{
-                  backgroundColor: failed
+                  backgroundColor: gameState
                     ? database[counter].answer === "b"
                       ? "green"
                       : ""
                     : "",
-                  cursor: failed ? "not-allowed" : "",
+                  cursor: gameState ? "not-allowed" : "",
                 }}
               >
                 {database[counter].options[1]}
@@ -354,14 +294,14 @@ function App() {
                 onClick={() => {
                   validate_answer("c");
                 }}
-                disabled={failed ? true : false}
+                disabled={gameState ? true : false}
                 style={{
-                  backgroundColor: failed
+                  backgroundColor: gameState
                     ? database[counter].answer === "c"
                       ? "green"
                       : ""
                     : "",
-                  cursor: failed ? "not-allowed" : "",
+                  cursor: gameState ? "not-allowed" : "",
                 }}
               >
                 {database[counter].options[2]}
@@ -372,14 +312,14 @@ function App() {
                 onClick={() => {
                   validate_answer("d");
                 }}
-                disabled={failed ? true : false}
+                disabled={gameState ? true : false}
                 style={{
-                  backgroundColor: failed
+                  backgroundColor: gameState
                     ? database[counter].answer === "d"
                       ? "green"
                       : ""
                     : "",
-                  cursor: failed ? "not-allowed" : "",
+                  cursor: gameState ? "not-allowed" : "",
                 }}
               >
                 {database[counter].options[3]}
