@@ -1,11 +1,13 @@
 import "./App.css";
 import { useState } from "react";
 import logo from "./images/logo.png";
+import WelcomeScreen from './components/WelcomeScreen';
+import Game from './components/Game';
 function App() {
   const [counter, setCounter] = useState(0);
   const [currentPrize, setCurrentPrize] = useState(0);
   const [gameState, setGameState] = useState(false);
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(30);
 
   var database = [
     {
@@ -66,9 +68,9 @@ function App() {
       answer: "b"
     },
     {
-      question: "What JavaScript engine is used in Mozilla?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "b"
+      question: "What is the error code for bad request?",
+      options: ["500", "404", "400", "200"],
+      answer: "c"
     },
     {
       question: "What JavaScript engine is used in Chrome?",
@@ -111,13 +113,13 @@ function App() {
     let modal_bg = document.getElementById("modal_bg");
     modal_bg.style.display = "none";
     // fadeOut(modal_bg, 0.07);
-    start_timer(validate_answer);
+    start_timer(validateAnswer);
   }
   function display_question() {
     setCounter((counter) => counter + 1);
     setCurrentPrize(prizes[counter]);
   }
-  function validate_answer(answer) {
+  function validateAnswer(answer) {
 
     if (answer !== database[counter].answer) {
         clearInterval(tick);
@@ -169,165 +171,9 @@ function App() {
 
   return (
     <div className="App">
-      <div id="modal_bg">
-        <img src={logo} id="logo_1" alt="logo" />
+      <WelcomeScreen play_game={play_game} />
 
-        <h1 id="title_msg">
-          Welcome to <br />
-          Who Wants To Be A Developer?
-        </h1>
-        <button
-          id="play"
-          className="welcome_btns"
-          onClick={() => {
-            play_game();
-          }}
-        >
-          Play
-        </button>
-        <button id="help" className="welcome_btns">
-          Help
-        </button>
-      </div>
-
-      <div id="container">
-        <div id="grid">
-          <div id="empty" className="halves"></div>
-
-          <div id="logo_div" className="halves">
-            <img src={logo} id="logo" alt="logo" />
-            <p id="time_box" style={{ color: time <= 10 ? "red" : "white" }}>
-              {time}
-            </p>
-          </div>
-
-          <div id="prizes" className="halves">
-            <p id="_100" className="prizes" style={setStyle(100)}>
-              {"1. N100"}
-            </p>
-            <p id="_200" className="prizes" style={setStyle(200)}>
-              {"2. N200"}
-            </p>
-            <p id="_300" className="prizes" style={setStyle(300)}>
-              {"3. N300"}
-            </p>
-            <p id="_500" className="prizes" style={setStyle(500)}>
-              {"4. N500"}
-            </p>
-            <p id="_1000" className="prizes" style={setStyle(1000)}>
-              {"5. N1,000"}
-            </p>
-            <p id="_2000" className="prizes" style={setStyle(2000)}>
-              {"6. N2,000"}
-            </p>
-            <p id="_4000" className="prizes" style={setStyle(4000)}>
-              {"7. N4,000"}
-            </p>
-            <p id="_8000" className="prizes" style={setStyle(8000)}>
-              {"8. N8,000"}
-            </p>
-            <p id="_16000" className="prizes" style={setStyle(16000)}>
-              {"9. N16,000"}
-            </p>
-            <p id="_32000" className="prizes" style={setStyle(32000)}>
-              {"10. N32,000"}
-            </p>
-            <p id="_64000" className="prizes" style={setStyle(64000)}>
-              {"11. N64,000"}
-            </p>
-            <p id="_125000" className="prizes" style={setStyle(125000)}>
-              {"12. N125,000"}
-            </p>
-            <p id="_250000" className="prizes" style={setStyle(250000)}>
-              {"13. N250,000"}
-            </p>
-            <p id="_500000" className="prizes" style={setStyle(500000)}>
-              {"14. N500,000"}
-            </p>
-            <p id="_1000000" className="prizes" style={setStyle(1000000)}>
-              {"15. N1 MILLION"}
-            </p>
-          </div>
-
-          <div id="q_and_a">
-            <p id="question">{database[counter].question}</p>
-            <div id="options">
-              <button
-                id="opt_a"
-                className="options"
-                onClick={() => {
-                  validate_answer("a");
-                }}
-                disabled={gameState ? true : false}
-                style={{
-                  backgroundColor: gameState
-                    ? database[counter].answer === "a"
-                      ? "green"
-                      : ""
-                    : "",
-                  cursor: gameState ? "not-allowed" : "",
-                }}
-              >
-                {database[counter].options[0]}
-              </button>
-              <button
-                id="opt_b"
-                className="options"
-                onClick={() => {
-                  validate_answer("b");
-                }}
-                disabled={gameState ? true : false}
-                style={{
-                  backgroundColor: gameState
-                    ? database[counter].answer === "b"
-                      ? "green"
-                      : ""
-                    : "",
-                  cursor: gameState ? "not-allowed" : "",
-                }}
-              >
-                {database[counter].options[1]}
-              </button>
-              <button
-                id="opt_c"
-                className="options"
-                onClick={() => {
-                  validate_answer("c");
-                }}
-                disabled={gameState ? true : false}
-                style={{
-                  backgroundColor: gameState
-                    ? database[counter].answer === "c"
-                      ? "green"
-                      : ""
-                    : "",
-                  cursor: gameState ? "not-allowed" : "",
-                }}
-              >
-                {database[counter].options[2]}
-              </button>
-              <button
-                id="opt_d"
-                className="options"
-                onClick={() => {
-                  validate_answer("d");
-                }}
-                disabled={gameState ? true : false}
-                style={{
-                  backgroundColor: gameState
-                    ? database[counter].answer === "d"
-                      ? "green"
-                      : ""
-                    : "",
-                  cursor: gameState ? "not-allowed" : "",
-                }}
-              >
-                {database[counter].options[3]}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Game time={time} setStyle={setStyle} database={database} counter={counter} gameState={gameState} validateAnswer={validateAnswer} />
     </div>
   );
 }

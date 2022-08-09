@@ -1,27 +1,24 @@
-/* .App{
-    background-color: red;
+.App{
     width: 100%;
     height: 100%;
-} */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #modal_bg{
     width: 100%;
     height: 100%;
     position: fixed;
-    /* background-color: rgba(0, 0, 0, 0.9); */
     background: linear-gradient(to right, rgb(22, 22, 88), rgb(3, 3, 27), rgb(22, 22, 88));
     z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* visibility: hidden; */
+    align-self: center;
     transition: .5s ease;
     opacity: 1;
-    margin-top: -10px;
-    margin-bottom: -10px;
-    margin-left: -10px;
-    margin-right: -10px;
-    /* animation: fadeOut .3s ease; */
 }
 #title_msg{
     font-size: 30px;
@@ -29,33 +26,6 @@
     justify-self: start;
     text-align: center;
 }
-/* #username_input_div{
-    width: 400px;
-    height: 200px;
-    background-color: aqua;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#username_title{
-    font-size: 30px;
-}
-#username_input{
-    width: 300px;
-    height: 30px;
-    border-radius: 10px;
-}
-#start{
-    width: 150px;
-    height: 45px;
-    color: white;
-    font-size: 20px;
-    border-radius: 10px;
-    background-color: green;
-    margin-top: 10px;
-} */
 #logo_1{
     width: 300px;
     height: 300px;
@@ -83,24 +53,7 @@
     background: linear-gradient(to right, rgb(3, 3, 27), rgb(22, 22, 88),rgb(3, 3, 27));
     background-color: green;
 }
-#container{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
-}
-#username{
-    /* width: 300px;
-    height: 100px; */
-    color: white;
-    /* justify-self: flex-start;
-    align-self: flex-start; */
-    /* position: absolute; */
-}
-#grid{
+#game{
     width: 1000px;
     height: 600px;
     background: linear-gradient(to right, rgb(102, 102, 190), rgb(16, 16, 102), rgb(102, 102, 190));
@@ -109,7 +62,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
+    margin-top: 30px;
 }
 .halves{
     width: 250px;
@@ -117,7 +70,6 @@
     background: linear-gradient(to bottom, rgba(35, 35, 77, 0.5), rgba(2, 2, 6, 0.695));
     border: 3px solid rgb(160, 175, 182);
     border-radius: 10px;
-    /* position: absolute; */
     margin-top: 20px;
 }
 #prizes{
@@ -125,7 +77,6 @@
     flex-direction: column-reverse;
     justify-content: flex-end;
     align-items: center;
-    /* overflow: auto; */
 }
 ::-webkit-scrollbar{
     width: 0px;
@@ -146,13 +97,7 @@
 #_100, #_32000, #_1000000{
     color: white;
 }
-/* #empty{
-    margin-right: 112.5px;
-    align-self: flex-end;
-} */
 #logo_div{
-    /* margin-left: 40px;
-    margin-right: 40px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,13 +109,10 @@
     width: 200px;
     height: 200px;
     margin-top: 30px;
-    /* position: absolute; */
-    /* align-self: center; */
 }
 #time_box{
     margin-top: 5px;
     width: 100px;
-    /* height: 200px; */
     border: 3px solid rgb(160, 175, 182);
     padding-top: 10px;
     border-radius: 100%;
@@ -183,12 +125,10 @@
     width: 650px;
     height: 200px;
     position: absolute;
-    /* background-color: red; */
     margin-top: 270px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
 }
 #question{
     width: 560px;
@@ -205,7 +145,6 @@
     width: 650px;
     height: 200px;
     position: absolute;
-    /* background-color: red; */
     margin-top: 150px;
     display: flex;
     flex-wrap: wrap;
