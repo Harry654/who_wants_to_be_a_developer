@@ -63,7 +63,7 @@
 }
 #game{
     width: 80%;
-    min-width: 1200px;
+    max-width: 95vw;
     height: 600px;
     background: linear-gradient(to right, rgb(102, 102, 190), rgb(16, 16, 102), rgb(102, 102, 190));
     border: 3px solid rgb(160, 175, 182);
