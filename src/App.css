@@ -62,7 +62,7 @@
     background-color: green;
 }
 #game{
-    width: 80%;
+    width: 90%;
     max-width: 95vw;
     height: 600px;
     background: linear-gradient(to right, rgb(102, 102, 190), rgb(16, 16, 102), rgb(102, 102, 190));

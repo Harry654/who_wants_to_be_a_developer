@@ -50,11 +50,11 @@ const fetchQuestions = () => {
             },
             {
               question: "React is primarily made for?",
-              options: ["Making better UI", "Improving speed", "Asynchronous handling", "Smart typing"],
+              options: ["Building UI", "Improving speed", "Asynchronous handling", "Smart typing"],
               answer: "a"
             },
             {
-              question: "JavaScript is a ?",
+              question: "JavaScript is a(n) ?",
               options: ["Compiled language", "Interpreted language", "Strongly typed", "Non-programming language"],
               answer: "b"
             },
@@ -64,19 +64,19 @@ const fetchQuestions = () => {
               answer: "c"
             },
             {
-              question: "What JavaScript engine is used in Chrome?",
-              options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
+              question: "Whai is the order of execution of the following?  1. constructor 2. componentDidMount 3. render",
+              options: ["3 2 1", "1 3 2", "2 3 1", "3 1 2"],
+              answer: "b"
+            },
+            {
+              question: "Props is location in memory",
+              options: ["True", "Not sure", "False", "None of the above"],
               answer: "c"
             },
             {
-              question: "What JavaScript engine is used in Chrome?",
-              options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-              answer: "c"
-            },
-            {
-              question: "What JavaScript engine is used in Chrome?",
-              options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-              answer: "c"
+              question: "What company invented ReactJS?",
+              options: ["Fakebook", "Google", "Alibaba", "Facebook"],
+              answer: "d"
             }
           ]
     );
