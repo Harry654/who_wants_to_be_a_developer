@@ -8,29 +8,29 @@ function App() {
   const [currentPrize, setCurrentPrize] = useState(0);
   const [gameState, setGameState] = useState(false);
   const [time, setTime] = useState(30);
-  const [database, setDatabase] = useState(fetchQuestions);
-  
+//   const [database, setDatabase] = useState(fetchQuestions);
+  const database = fetchQuestions;
   var prizes = [
     100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000,
     250000, 500000, 1000000
   ];
 
   let tick = null;
-  function fadeOut(target, speed) {
-    // fade in effect
-    let opacity = 1;
-    // alert(opacity);
-    let timer = setInterval(function () {
-      if (opacity <= 0) {
-        clearInterval(timer);
-        target.style.visibility = "hidden";
-      }
-      target.style.opacity = opacity;
-      target.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+//   function fadeOut(target, speed) {
+//     // fade in effect
+//     let opacity = 1;
+//     // alert(opacity);
+//     let timer = setInterval(function () {
+//       if (opacity <= 0) {
+//         clearInterval(timer);
+//         target.style.visibility = "hidden";
+//       }
+//       target.style.opacity = opacity;
+//       target.style.filter = "alpha(opacity=" + opacity * 100 + ")";
 
-      opacity -= speed;
-    }, 100);
-  }
+//       opacity -= speed;
+//     }, 100);
+//   }
   function play_game() {
     let welcome_screen = document.getElementById("welcome-screen");
     welcome_screen.style.display = "none";
