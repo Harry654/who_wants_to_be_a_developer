@@ -1,93 +1,15 @@
 import "./App.css";
 import { useState } from "react";
-import logo from "./images/logo.png";
 import WelcomeScreen from './components/WelcomeScreen';
 import Game from './components/Game';
+import fetchQuestions from './components/fetchQuestions';
 function App() {
   const [counter, setCounter] = useState(0);
   const [currentPrize, setCurrentPrize] = useState(0);
   const [gameState, setGameState] = useState(false);
   const [time, setTime] = useState(30);
-
-  var database = [
-    {
-      question: "How is the front page of a website commonly referred to?",
-      options: ["Pile page", "Abode page", "Pad Page", "Home page"],
-      answer: "d"
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c"
-    },
-    {
-      question: "Which of the following is not a Higher order function?",
-      options: ["alert", "filter", "map", "reduce"],
-      answer: "a"
-    },
-    {
-      question:
-        "The process in which a function is called above it's declaration is known as?",
-      options: ["Preemption", "Hoisting", "Preference", "Scoping"],
-      answer: "b"
-    },
-    {
-      question:
-        "alert('Hello world!');<br />In the code above, 'Hello world' is the",
-      options: ["parameter", "argument", "placeholder", "input"],
-      answer: "b"
-    },
-    {
-      question: "Asynchronous JavaScript is also known as?",
-      options: ["Blocking", "Non-blocking", "Serial", "Unordered"],
-      answer: "b"
-    },
-    {
-      question: "Promises are used to ?",
-      options: ["Enhance polymorphism", "Avoid callback hell", "Serve Ice cream", "Stop execution",],
-      answer: "b"
-    },
-    {
-      question: "Which of the following doesn't work with promises?",
-      options: ["then", "catch", "finally", "stop"],
-      answer: "d"
-    },
-    {
-      question: "What type of component uses the \"this\" keyword?",
-      options: ["Functional", "Dumb", "Class", "Stateless"],
-      answer: "c"
-    },
-    {
-      question: "React is primarily made for?",
-      options: ["Making better UI", "Improving speed", "Asynchronous handling", "Smart typing"],
-      answer: "a"
-    },
-    {
-      question: "JavaScript is a ?",
-      options: ["Compiled language", "Interpreted language", "Strongly typed", "Non-programming language"],
-      answer: "b"
-    },
-    {
-      question: "What is the error code for bad request?",
-      options: ["500", "404", "400", "200"],
-      answer: "c"
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c"
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c"
-    },
-    {
-      question: "What JavaScript engine is used in Chrome?",
-      options: ["Chakra", "Spider Monkey", "V8 Engine", "JavaScriptCore"],
-      answer: "c"
-    }
-  ];
+  const [database, setDatabase] = useState(fetchQuestions);
+  
   var prizes = [
     100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000,
     250000, 500000, 1000000
@@ -110,9 +32,9 @@ function App() {
     }, 100);
   }
   function play_game() {
-    let modal_bg = document.getElementById("modal_bg");
-    modal_bg.style.display = "none";
-    // fadeOut(modal_bg, 0.07);
+    let welcome_screen = document.getElementById("welcome-screen");
+    welcome_screen.style.display = "none";
+    // fadeOut(welcome_screen, 0.07);
     start_timer(validateAnswer);
   }
   function display_question() {
@@ -146,18 +68,14 @@ function App() {
             // console.log(time);
                 if(time === 0) {
                     callback();
+                    console.log(time);
                     return 0;
                 }
                 return (time -=  1);
             });
         }, 1000);
-    }
-    // setTimeout(() => {console.log(time)}, 3000)  
-
-
-  function stop_timer() {
-    clearInterval(tick);
   }
+
   function setStyle(prize) {
     if (prize === currentPrize) {
       if (prize === 100 || prize === 32000 || prize === 1000000)
@@ -172,7 +90,6 @@ function App() {
   return (
     <div className="App">
       <WelcomeScreen play_game={play_game} />
-
       <Game time={time} setStyle={setStyle} database={database} counter={counter} gameState={gameState} validateAnswer={validateAnswer} />
     </div>
   );

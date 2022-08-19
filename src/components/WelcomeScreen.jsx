@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 function WelcomeScreen({play_game}) {
   return (
-    <div id="modal_bg">
+    <div id="welcome-screen">
         <Logo />
 
         <h1 id="title_msg">
