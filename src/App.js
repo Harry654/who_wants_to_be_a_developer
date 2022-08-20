@@ -10,6 +10,9 @@ function App() {
   const [time, setTime] = useState(30);
 //   const [database, setDatabase] = useState(fetchQuestions);
   const database = fetchQuestions();
+  var audio = new Audio(require('./images/bg-music.mp3'));
+  // var audio = new Audio(require('./images/Cartoon - On .mp3'));
+  audio.play();
   var prizes = [
     100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000,
     250000, 500000, 1000000
@@ -89,6 +92,9 @@ function App() {
 
   return (
     <div className="App">
+      // <audio preload="auto">
+      //   <source src={require('./images/bg-music.mp3')}></source>
+      // </audio>
       <WelcomeScreen play_game={play_game} />
       <Game time={time} setStyle={setStyle} database={database} counter={counter} gameState={gameState} validateAnswer={validateAnswer} />
     </div>
