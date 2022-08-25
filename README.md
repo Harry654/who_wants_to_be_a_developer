@@ -1,1 +1,1 @@
-<img src="https://picsum.com/photos/200">
+<img src="./src/images/screenshot.png" alt="game screenshot">
